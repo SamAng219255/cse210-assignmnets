@@ -1,0 +1,15 @@
+What is abstraction and why is it important?
+
+Abstraction is the process of breaking down a concept by dividing it into layers of individual parts of increasing simplicity. These layers both divide processes that are otherwise unrelated and reveal that many processes are composed of similar components which has many benfits including allowing the interchanging of means of performing a given task without worrying about changing it in multiple locations or requiring adjustments across the entirety of the project. It also helps determine the means to accomplish an otherwise daunting or overly complex task. Last term, I wrote a program that measured various qualities of a 3d mesh. These meshes had multiple possible means of being represented, all requiring diverse means of referencing their parts. In order to handle this, I created an additional abstraction layer by creating a generic Mesh class which was inherited by several other child classes which each overrode a series of generic properties that referenced the necessary attributes of the mesh with their owns means of referencing. This way, my measuring and computational functions could reference these properties without concern for how to get these properties out of a given mesh format.
+Another example of abstraction can be found in the learning activity from this week. The application called for storing resumes which contained a list of jobs and then displaying the information stored within. We gave each of those types of information separate classes, called Resume and Job respectively. Instead of embedding the code to parse the job description into a display format into the Resume class, we added a separate method to Job to display its own relevant data
+public void Display() {
+    Console.WriteLine($"{_jobTitle} ({_company}) {_startYear}-{_endYear}");
+}
+and simply called it for each job in the Resume Display method.
+public void Display() {
+    ...
+    foreach(Job job in _jobs) {
+        job.Display();
+    }
+}
+This way, the Resume class doesn't need to know how a Job should be formatted and it can easily be switched if needed.
