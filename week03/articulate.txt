@@ -1,0 +1,18 @@
+Encapsulation is the process and act of placing processes inside of distinct regions and limiting access between them. Encapsulation has an effect of making each class a self-sufficient part that can be used regardless of the greater context. This makes it significantly simpler and quicker to adjust how the part accomplishes its task or where the part is placed in the assembly by limiting the affected regions of code when such changes are performed and concentrating it into one, easily understood, location. A common application of encapsulation are the base classes including the "List" class. The List class handles all of its actually behaviors entirely internally, preventing users from needing to handle how to store, allocate memory for, rearrange, add, or remove elements and only exposing high-level manipulation methods that black box the internal processes.
+An example from the assignment is the way we hid words. The Scripture class handled randomly selecting words, preventing the Program class from needing to know the internal structure of how words were accessed. Meanwhile, Scripture used the .Hide() method from the Word class to hide its words, preventing it from needing to know the internal mechanism via which they are hidden. This way, each step functions as a distinct interchangeable part and is easily adjustable.
+Program.cs:
+	scripture.HideRandom(6);
+Scripture.cs:
+	private List<Word> _words;
+
+	public void HideRandom(int count) {
+		... // Randomly choosing an index
+		_words[randomSelectedIndex].Hide();
+		...
+	}
+Word.cs:
+	private bool _isHidden;
+	
+	public void Hide() {
+		_isHidden = true;
+	}

@@ -1,0 +1,112 @@
+YouTube Video Program:
+    +————————————————————————+
+    | Class: Program         |
+    +————————————————————————+
+    | Methods:               |
+    |   static Main() : void |
+    +————————————————————————+
+
+    +————————————————————————————————————————————————————————+
+    | Class: Video                                           |
+    +————————————————————————————————————————————————————————+
+    | Attributes:                                            |
+    |   _title : string                                      |
+    |   _author : string                                     |
+    |   _length : int                                        |
+    |   _comments : List<Comment>                            |
+    +————————————————————————————————————————————————————————+
+    | Methods:                                               |
+    |   Video(title : string, author : string, length : int) |
+    |   AddComment(comment : Comment) : void                 |
+    |   GetCommentsCount() : int                             |
+    |   GetComments() : List<Comment>                        |
+    |   Display() : void                                     |
+    +————————————————————————————————————————————————————————+
+    
+    +—————————————————————————————————————————+
+    | Class: Comment                          |
+    +—————————————————————————————————————————+
+    | Attributes:                             |
+    |   _commenterName : string               |
+    |   _commentText : string                 |
+    +—————————————————————————————————————————+
+    | Methods:                                |
+    |   Comment(name : string, text : string) |
+    |   Display() : void                      |
+    +—————————————————————————————————————————+
+
+    The Program.Main() method creates a List of three Video instances created from Video.Video.
+    It then adds Comment instances, created via Comment.Comment, to each of the Video instances.
+    Lastly, it calls Video.Display() to display the videos. Video.Display() calls Comment.Display() on each of its comments.
+
+Online Ordering Program:
+    +————————————————————————+
+    | Class: Program         |
+    +————————————————————————+
+    | Methods:               |
+    |   static Main() : void |
+    +————————————————————————+
+
+    +————————————————————————————————————————————————————————+
+    | Class: Order                                           |
+    +————————————————————————————————————————————————————————+
+    | Attributes:                                            |
+    |   _products : List<Product>                            |
+    |   _customer : Customer                                 |
+    +————————————————————————————————————————————————————————+
+    | Methods:                                               |
+    |   Order(products : List<Product>, customer : Customer) |
+    |   CalculateTotal() : float                             |
+    |   GetPackingLabel() : string                           |
+    |   GetShippingLabel() : string                          |
+    +————————————————————————————————————————————————————————+
+
+    +———————————————————————————————————————————————————————————————————+
+    | Class: Product                                                    |
+    +———————————————————————————————————————————————————————————————————+
+    | Attributes:                                                       |
+    |   _name : string                                                  |
+    |   _productId : string                                             |
+    |   _price : float                                                  |
+    |   _quantity : int                                                 |
+    +———————————————————————————————————————————————————————————————————+
+    | Methods:                                                          |
+    |   Product(name : string, id : string, price : float, qty : int)   |
+    |   GetLabel() : string                                             |
+    |   GetTotalCost() : float                                          |
+    +———————————————————————————————————————————————————————————————————+
+
+    +——————————————————————————————————————————————+
+    | Class: Customer                              |
+    +——————————————————————————————————————————————+
+    | Attributes:                                  |
+    |   _name : string                             |
+    |   _address : Address                         |
+    +——————————————————————————————————————————————+
+    | Methods:                                     |
+    |   Customer(name : string, address : Address) |
+    |   GetLabel() : string                        |
+    |   IsInUSA() : bool                           |
+    +——————————————————————————————————————————————+
+
+    +—————————————————————————————————————————————————————————————————————————————+
+    | Class: Address                                                              |
+    +—————————————————————————————————————————————————————————————————————————————+
+    | Attributes:                                                                 |
+    |   _street : string                                                          |
+    |   _city : string                                                            |
+    |   _state : string                                                           |
+    |   _country : string                                                         |
+    +—————————————————————————————————————————————————————————————————————————————+
+    | Methods:                                                                    |
+    |   Address(street : string, city : string, state : string, country : string) |
+    |   IsInUSA() : bool                                                          |
+    |   ToString() : string                                                       |
+    +—————————————————————————————————————————————————————————————————————————————+
+
+    The Program.Main method creates the initial class instances and calls the Order.CalculateTotal, Order.GetPackingLabel, and Order.GetShippingLabel methods. 
+    Order.CalculateTotal calls the Product.GetTotalCost() method for each of its products and the Customer.IsInUSA() method to determine the price with. 
+    Customer.IsInUSA() calls Address.IsInUSA() in turn to retrieve the information.
+    Order.GetPackingLabel() calls Product.GetLabel() method for each of its products which return a string composed of the product name and id.
+    Order.GetShippingLabel() calls the Customer.GetLabel() method which assembles the name and address of the customer.
+    Customer.GetLabel() gets the address by calling Address.ToString() which returns it's information as a string.
