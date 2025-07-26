@@ -24,7 +24,8 @@ class Video {
     }
 
     public string GetDisplay() {
-        string displayString = $"Title: {_title}\nAuthor: {_author}\nLength: {_length}";
+        int commentsCount = GetCommentsCount();
+        string displayString = $"Title: {_title}\nAuthor: {_author}\nLength: {_length}\n{commentsCount} Comments:";
         foreach(Comment comment in _comments) {
             displayString += "\n\t" + comment.GetDisplay();
         }
