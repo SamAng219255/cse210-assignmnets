@@ -1,0 +1,25 @@
+Inheritance is a concept which allows one class to receive, or inherit, the properties of another. Inheritance makes it easy to create multiple similar classes or multiple versions of the same class. A basic example of how it works would be to say that "a dog is an animal": Dogs are not the only animals but all animals possess a set of similar traits which you can indicate that a dog has by stating it is an animal. Dogs also have several features unique to them, despite inheriting the properties of an animal, meaning they need their own designation and type. A common application of inheritance that I've seen is when games or other programs need to sync data across the network. It is common to create a class that contains all of the "equipment", so to speak, to send itself across the network and keep both versions up-to-date. Then, any type of data which needs to be synced as such inherits from that class so that its data can be sent back and forth without worrying about the specific mechanism for each item.
+In our project this week, I used inheritance to create several types of activities that could all be run the same despite their varied behaviors.
+I called their methods as such:
+
+Program.Main
+    activities[activityIndex].DisplayStartingMessage();
+    activities[activityIndex].Run();
+    activities[activityIndex].DisplayEndingMessage();
+
+Each activity inherited the DisplayStartingMessage and DisplayEndingMessage method from the parent class but had their own Run method that I was able to call from each instance while storing all as the parent class.
+
+public abstract class Activity {
+	public void DisplayStartingMessage();
+	public void DisplayEndingMessage();
+	public abstract void Run();
+}
+public class BreathingActivity {
+	public void Run();
+}
+public class ReflectingActivity {
+	public void Run();
+}
+public class ListingActivity {
+	public void Run();
+}
