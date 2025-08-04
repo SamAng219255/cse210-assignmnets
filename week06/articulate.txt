@@ -1,0 +1,24 @@
+Polymorphism is the property of something to take multiple forms. In the context of programming, this generally refers to the principle of using overloading and overriding to give a piece of code dynamic behaviors based on the surrounding context. Polymorphism allows simplifying operations which are similar in their inputs and outputs but vary in their execution. Polymorphism expands the principle of encapsulation by enabling various behaviors to be encapsulated under a single identifier. A previous application of encapsulation I employed was when handling 3d meshes retrieved from differing file formats. The program needed to perform the same mathematical operations on the data retrieved from the mesh regardless of the source, but the formats stored those values in very different ways which I moved into memory directly, using child classes of a single mesh class which stored the mesh in the format native to the given file format. This made loading the files into memory a simple task and polymorphism allowed me to use a unified set of methods reference the required data.
+In the learning activity, polymorphism was used to simplify the getting of the areas of the shapes, regardless of which class was used, even the Square, Rectangle, and Circle classes had differing code to calculate their area:
+Program.Main:
+	List<Shape> shapes = new List<Shape>{
+		new Square("red", 3.0),
+		new Rectangle("green", 5.0, 6.0),
+		new Circle("blue", 2.0)
+	};
+
+	foreach(Shape shape in shapes) {
+		Console.WriteLine($"Color: {shape.GetColor()}\nArea: {shape.GetArea()}\n");
+	}
+Square:
+	public override double GetArea() {
+		return _side * _side;
+	}
+Rectangle:
+	public override double GetArea() {
+		return _side * _side;
+	}
+Circle:
+	public override double GetArea() {
+		return Math.PI * _radius * _radius;
+	}
